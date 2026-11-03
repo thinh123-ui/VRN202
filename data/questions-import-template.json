@@ -1,0 +1,19 @@
+[
+  {
+    "id": "custom-nhap-mon-011",
+    "missionSlug": "nhap-mon-lich-su-dang",
+    "position": 11,
+    "prompt": "Chức năng nhận thức của môn Lịch sử Đảng giúp làm rõ vấn đề nào?",
+    "options": [
+      "Quy luật ra đời và phát triển của Đảng",
+      "Cấu tạo vật chất của các hành tinh",
+      "Các phép tính vi phân",
+      "Quy trình lập báo cáo tài chính"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nội dung chức năng nhận thức được trình bày trong Session 1, trang 7 của tài liệu học phần.",
+    "sourceDocumentId": "session-01",
+    "sourcePage": 7,
+    "difficulty": "easy"
+  }
+]

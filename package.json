@@ -1,0 +1,36 @@
+{
+  "name": "vnr202-quest",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "VNR202 Quest - 29 PDF sessions, 435 source pages, 60 sourced quizzes, 60 flashcards, Neon PostgreSQL 19-table database",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n API,WEB -c cyan,magenta \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "node --watch server/index.js",
+    "dev:client": "vite --host 127.0.0.1",
+    "db:init": "node scripts/init-db.js",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "check": "node --check server/index.js && node --check server/scoring.js && node --check scripts/init-db.js && node --check scripts/seed-data.js && node --check scripts/pdf-questions.js && node --check scripts/export-neon-sql.js && node --check scripts/curriculum-data.js && node --check scripts/import-questions.js && node --check scripts/verify-db.js",
+    "test": "node --test tests/*.test.js",
+    "db:sql": "node scripts/export-neon-sql.js",
+    "db:verify": "node scripts/verify-db.js",
+    "db:import:questions": "node scripts/import-questions.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "lucide-react": "^0.468.0",
+    "pg": "^8.16.3",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.4",
+    "concurrently": "^9.2.1",
+    "vite": "^7.1.9"
+  }
+}

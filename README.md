@@ -168,10 +168,18 @@ Kết quả database **mới chưa thêm gì**: `chapters=4`, `lessons=29`, `sou
 
 Giao diện web hiện có dashboard, 6 chiến dịch, thư viện PDF, timeline và leaderboard. **API/cấu trúc flashcard đã có, nhưng chưa có màn Flashcard riêng trên frontend**.
 
-## 8. Danh sách file trọng tâm
+## 8. Triển khai lên Render
+
+Repository đã có `Dockerfile` và `.dockerignore` để triển khai bằng Docker. Trong Render, chọn **Language: Docker**, **Branch: main**, **Dockerfile Path: `./Dockerfile`**, để trống **Root Directory** và **Docker Command**. Thêm `DATABASE_URL` trong phần Environment; không commit `.env` hoặc connection string lên GitHub.
+
+Khởi tạo Neon một lần bằng `npm run db:init` từ môi trường có quyền kết nối database. Docker deploy không tự chạy lệnh này. Xem [RENDER-DEPLOY.md](./RENDER-DEPLOY.md) để biết các bước chi tiết.
+
+## 9. Danh sách file trọng tâm
 
 ```text
 vnr202-quest/
+├─ Dockerfile                  # build Vite và chạy Express trên Render
+├─ .dockerignore
 ├─ sql/
 │  ├─ schema.sql               # 19 bảng + 2 view (chạy được nhiều lần)
 │  ├─ neon-complete.sql        # 19 bảng + toàn bộ dữ liệu nguồn
@@ -191,11 +199,12 @@ vnr202-quest/
 ├─ server/                    # Express API
 ├─ src/                       # React dashboard
 ├─ DATABASE.md                # sơ đồ dữ liệu
+├─ RENDER-DEPLOY.md           # hướng dẫn deploy Render bằng Docker
 ├─ .env.example
 └─ package.json
 ```
 
-## 9. Điều đã/ chưa được kiểm thử
+## 10. Điều đã/ chưa được kiểm thử
 
 - ✅ Kiểm tra cú pháp JavaScript phía server, script nhập và xuất SQL.
 - ✅ 10 bài kiểm thử dữ liệu và logic, bao gồm checksum SHA-256 của 29 PDF nguồn.
